@@ -1,8 +1,12 @@
 import fire
+from tool.decorator import needs_ngspice
+
 
 class NGSPICEJsonCli:
+
+    @needs_ngspice
     def test(self):
-        return "a"
+        return "hi roo"
 
 
 if __name__ == '__main__':
