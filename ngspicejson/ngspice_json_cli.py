@@ -4,18 +4,15 @@ from tool.ngspice_tool import ngspice_with_command
 import re
 import json
 
+
 class NGSPICEJsonCli:
 
     @needs_ngspice
-    def test(self):
-        return "hi roo"
+    def run(self, command, file):
 
-    @needs_ngspice
-    def showall(self):
-
-        get_all_device_infomation = ngspice_with_command("show all", "-source_lines", "-n", "b.cir")
+        get_all_device_information = ngspice_with_command(command, file)
         list_of_each_source = re.findall(r"\s?[A-Z].*:\s[A-Z].*\n[A-Za-z\s0-9-]{1,}\n.{1,}.*\n.{1,}",
-                                        get_all_device_infomation)
+                                         get_all_device_information)
 
         result_of_all_prints = []
         for source in list_of_each_source:
@@ -38,7 +35,7 @@ class NGSPICEJsonCli:
 
             for t in source_lines:
                 list_of_model = ' '.join(t.split()).split()
-                if len(list_of_model)-1 == len(list_of_device): # 신규 등록 모드
+                if len(list_of_model)-1 == len(list_of_device):  # 신규 등록 모드
                     line = list_of_model
                     temp_title = line[0]
                     for idx, tt in enumerate(line[1:]):
