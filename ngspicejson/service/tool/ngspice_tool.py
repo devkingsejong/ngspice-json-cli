@@ -1,6 +1,7 @@
 import subprocess
 import os
 
+
 def check_ngspice_is_installed():
     try:
 
