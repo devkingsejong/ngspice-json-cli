@@ -1,5 +1,5 @@
 import subprocess
-
+import os
 
 def check_ngspice_is_installed():
     try:
@@ -12,4 +12,10 @@ def check_ngspice_is_installed():
 
 def ngspice(*arg):
     result = subprocess.check_output(["ngspice", *arg])
+    return result
+
+
+def ngspice_with_command(command, file, *arg):
+    result = os.popen('printf "{0}" | ngspice -p -n {1}'.format(command, file)).read()
+
     return result
