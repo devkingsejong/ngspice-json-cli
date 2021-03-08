@@ -4,7 +4,7 @@ import re
 
 class ModelListParse(AbstractParse):
     def _detect_target(self):
-        return re.findall(r"\s?[A-Z].*:\s[A-Z].*\n[A-Za-z\s0-9-]{1,}\n.{1,}.*\n.{1,}", self.input)
+        return re.findall(r"\s?[A-Z].*:\s[A-Z].*\n[A-Za-z\s0-9\+\-\.\_]{1,}\n", self.input)
 
     def _parse(self, target_list):
 
