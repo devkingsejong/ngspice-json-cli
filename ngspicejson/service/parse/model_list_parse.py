@@ -15,6 +15,8 @@ class ModelListParse(AbstractParse):
 
             title_line = source_lines[0].strip()
             title_line = title_line.split(":")
+            if len(title_line) != 2:
+                continue
             title = title_line[0]
             title_description = title_line[1].strip()
 
