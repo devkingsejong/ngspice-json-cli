@@ -1,5 +1,6 @@
 from .abstract_parse import AbstractParse
 import re
+from ..tool.marshal import simple_keyvalues_marshal, dynamic_keyvalues_marshal, KEY_TITLE, VALUE_TITLE
 
 
 class ModelListParse(AbstractParse):
@@ -25,7 +26,7 @@ class ModelListParse(AbstractParse):
             del source_lines[0]
             list_of_device = ' '.join(source_lines[0].split()).split()[1:]
             for t in list_of_device:
-                temp['contents'].append({"model": t, "vals": []})
+                temp['contents'].append(dynamic_keyvalues_marshal("model", t, []))
 
             del source_lines[0]
 
@@ -35,12 +36,13 @@ class ModelListParse(AbstractParse):
                     line = list_of_model
                     temp_title = line[0]
                     for idx, tt in enumerate(line[1:]):
-                        temp['contents'][idx]['vals'].append({"title": temp_title, "value": [tt]})
+
+                        temp['contents'][idx][VALUE_TITLE].append(simple_keyvalues_marshal(temp_title, [tt]))
 
                 else:
                     line = list_of_model
                     for idx, tt in enumerate(line[0:]):
-                        temp['contents'][idx]['vals'][-1]['value'].append(tt)
+                        temp['contents'][idx][VALUE_TITLE][-1][VALUE_TITLE].append(tt)
 
             result_of_all_prints.append(temp)
 
