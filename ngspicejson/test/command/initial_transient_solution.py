@@ -1,9 +1,9 @@
 import unittest
 import json
-from ...parse.initial_transient_solution_parse import InitialTransientSolutionParse
+from ngspicejson.service.parse.initial_transient_solution_parse import InitialTransientSolutionParse
 
 
-# python -m ngspicejson.service.test.command.show_all
+# python -m ngspicejson.test.command.initial_transient_solution
 class MyTestCase(unittest.TestCase):
     maxDiff = None
 

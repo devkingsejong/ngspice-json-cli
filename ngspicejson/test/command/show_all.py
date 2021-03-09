@@ -1,9 +1,9 @@
 import unittest
 import json
-from ...parse.model_list_parse import ModelListParse
+from ngspicejson.service.parse.model_list_parse import ModelListParse
 
 
-# python -m ngspicejson.service.test.command.show_all
+# python -m ngspicejson.test.command.show_all
 class MyTestCase(unittest.TestCase):
     maxDiff = None
 
