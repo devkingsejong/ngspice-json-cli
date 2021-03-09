@@ -28,8 +28,7 @@ class InitialTransientSolutionParse(AbstractParse):
             if target.strip() == '':
                 continue
             list_of_model = ' '.join(target.split()).split()
-            temp = {"title": list_of_model[0], "description": "",
-                    "contents": [{"model": "Voltage", "vals": [list_of_model[1]]}]}
+            temp = {"model": list_of_model[0], "values": [{"key": "Voltage", "values": [list_of_model[1]]}]}
             result_of_all_prints.append(temp)
         return result_of_all_prints
 
