@@ -1,4 +1,5 @@
 from .abstract_parse import AbstractParse
+from ..tool.marshal import simple_keyvalues_marshal, dynamic_keyvalues_marshal
 import re
 
 
@@ -28,7 +29,9 @@ class InitialTransientSolutionParse(AbstractParse):
             if target.strip() == '':
                 continue
             list_of_model = ' '.join(target.split()).split()
-            temp = {"model": list_of_model[0], "values": [{"key": "Voltage", "values": [list_of_model[1]]}]}
+
+            temp = dynamic_keyvalues_marshal("node", list_of_model[0],
+                                             simple_keyvalues_marshal("Voltage", list_of_model[1]))
             result_of_all_prints.append(temp)
         return result_of_all_prints
 
