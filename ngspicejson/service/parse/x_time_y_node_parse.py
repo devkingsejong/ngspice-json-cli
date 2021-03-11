@@ -5,7 +5,7 @@ from ..tool.marshal import simple_keyvalues_marshal, dynamic_keyvalues_marshal, 
 
 class X_TimeY_NodeParse(AbstractParse):
     def _detect_target(self):
-        return re.findall(r"(Index.*time.*\n----.*\n(\d{1,}[	 ].*[	 ].*[	 ].*\n){1,})", self.input)
+        return re.findall(r"(Index.*time.*\n----.*\n(\d{1,}[	 ].*[	 ].*[	 ]?.*\n){1,})", self.input)
 
     def _parse(self, target_list):
         result_of_all_prints = []
@@ -34,7 +34,7 @@ class X_TimeY_NodeParse(AbstractParse):
 
             bulk_data = target[2:]
             for data_line in bulk_data:
-                data_line = data_line.split('\t')  # TODO: 스페이스도 지원
+                data_line = data_line.split()  # TODO: 스페이스도 지원
                 data_line = data_line[1:]
 
                 for idx, data in enumerate(data_line):
