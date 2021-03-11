@@ -9,7 +9,7 @@ class AbstractParse(metaclass=ABCMeta):
 
     def dict(self):
         target_list = self._detect_target()
-        return global_marshal(self._get_title(), self._parse(target_list), target_list)
+        return global_marshal(self._get_title(), self._parse(target_list), self.input)
 
     @abstractmethod
     def _detect_target(self):
