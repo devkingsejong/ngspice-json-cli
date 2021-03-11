@@ -1,6 +1,6 @@
 import unittest
 import json
-from ngspicejson.service.parse.initial_transient_solution_parse import InitialTransientSolutionParse
+from ngspicejson.service.parse.parse_initial_transient_solution import ParseInitialTransientSolution
 
 
 # python -m ngspicejson.test.command.initial_transient_solution
@@ -2245,7 +2245,7 @@ Index   time            v1#branch       in
 1027    4.999851e-02    -5.32473e-06    5.000000e+00    
 1028    5.000000e-02    -5.32401e-06    5.000000e+00    
 """
-        model_list_parse = InitialTransientSolutionParse(cli_input)
+        model_list_parse = ParseInitialTransientSolution(cli_input)
         result_of_all_prints = model_list_parse.dict()
         correct_output = """
 {"type":"INITIAL_TRANSIENT_SOLUTION","contents":[{"node":"int","values":[{"key":"Voltage","values":["0"]}]},{"node":"in","values":[{"key":"Voltage","values":["0"]}]},{"node":"out","values":[{"key":"Voltage","values":["0"]}]},{"node":"v1#branch","values":[{"key":"Voltage","values":["0"]}]}]}
@@ -4484,7 +4484,7 @@ Index   time            v1#branch       in
 Note: No ".plot", ".print", or ".fourier" lines; no simulations run
 
         """
-        model_list_parse = InitialTransientSolutionParse(cli_input)
+        model_list_parse = ParseInitialTransientSolution(cli_input)
         result_of_all_prints = model_list_parse.dict()
         correct_output = """
 {"type":"INITIAL_TRANSIENT_SOLUTION","contents":[{"node":"int","values":[{"key":"Voltage","values":["0"]}]},{"node":"in","values":[{"key":"Voltage","values":["0"]}]},{"node":"out","values":[{"key":"Voltage","values":["0"]}]},{"node":"v1#branch","values":[{"key":"Voltage","values":["0"]}]}]}

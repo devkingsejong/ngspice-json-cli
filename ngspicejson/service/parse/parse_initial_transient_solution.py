@@ -3,7 +3,7 @@ from ..tool.marshal import simple_keyvalues_marshal, dynamic_keyvalues_marshal
 import re
 
 
-class InitialTransientSolutionParse(AbstractParse):
+class ParseInitialTransientSolution(AbstractParse):
     def _detect_target(self):
         return re.findall(r"(Initial Transient Solution\n"
                           r"--------------------------\n\n"
