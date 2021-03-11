@@ -3,7 +3,7 @@ import re
 from ..tool.marshal import simple_keyvalues_marshal, dynamic_keyvalues_marshal, KEY_TITLE, VALUE_TITLE
 
 
-class ModelListParse(AbstractParse):
+class ParseModelList(AbstractParse):
     def _detect_target(self):
         return re.findall(r"\s?[A-Z].*:\s[A-Z].*\n[A-Za-z\s0-9\+\-\.\_]{1,}\n", self.input)
 
