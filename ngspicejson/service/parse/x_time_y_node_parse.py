@@ -27,7 +27,7 @@ class X_TimeY_NodeParse(AbstractParse):
 
                 list_of_data = target[0].split()[1:]
                 for data in list_of_data:
-                    temp[VALUE_TITLE].append(dynamic_keyvalues_marshal("data_name", data, []))
+                    temp[VALUE_TITLE].append(dynamic_keyvalues_marshal("data_name", data.strip(), []))
 
                 result_of_all_prints.append(temp)
                 count_for_bulk_data_list+=1
@@ -40,7 +40,7 @@ class X_TimeY_NodeParse(AbstractParse):
                 for idx, data in enumerate(data_line):
                     if data == "":
                         continue
-                    result_of_all_prints[-1][VALUE_TITLE][idx][VALUE_TITLE].append(data)
+                    result_of_all_prints[-1][VALUE_TITLE][idx][VALUE_TITLE].append(data.strip())
 
         return result_of_all_prints
 
