@@ -1,9 +1,9 @@
 import unittest
 import json
-from ngspicejson.service.parse.x_time_y_node_parse import X_TimeY_NodeParse
+from ngspicejson.service.parse.parse_print_tabular_contents import ParsePrintTabularContents
 
 
-# python -m ngspicejson.test.command.x_time_y_node_parse
+# python -m ngspicejson.test.command.parse_tabular_contents
 class MyTestCase(unittest.TestCase):
     maxDiff = None
 
@@ -2237,7 +2237,7 @@ Index   time            v1#branch       in
 1028    5.000000e-02    -5.32401e-06    5.000000e+00   
 """
 
-        model_list_parse = X_TimeY_NodeParse(cli_input)
+        model_list_parse = ParsePrintTabularContents(cli_input)
         result_of_all_prints = model_list_parse.dict()
 
         correct_output = """
@@ -4480,7 +4480,7 @@ Index   time            v1#branch       in
 Note: No ".plot", ".print", or ".fourier" lines; no simulations run
         """
 
-        model_list_parse = X_TimeY_NodeParse(cli_input)
+        model_list_parse = ParsePrintTabularContents(cli_input)
         result_of_all_prints = model_list_parse.dict()
 
         correct_output = """

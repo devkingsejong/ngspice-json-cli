@@ -3,7 +3,7 @@ import re
 from ..tool.marshal import simple_keyvalues_marshal, dynamic_keyvalues_marshal, KEY_TITLE, VALUE_TITLE
 
 
-class X_TimeY_NodeParse(AbstractParse):
+class ParsePrintTabularContents(AbstractParse):
     def _detect_target(self):
         return re.findall(r"(Index.*time.*\n----.*\n(\d{1,}[	 ].*[	 ].*[	 ]?.*\n){1,})", self.input)
 
