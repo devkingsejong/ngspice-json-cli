@@ -1,5 +1,3 @@
-import json
-
 KEY_TITLE = "key"
 VALUE_TITLE = "values"
 
