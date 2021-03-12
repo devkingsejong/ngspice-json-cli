@@ -21,4 +21,4 @@ class ParseNgspiceVersion(AbstractParse):
         return result_of_all_prints
 
     def _get_title(self):
-        return "NGSPICE_VERISON"
+        return "NGSPICE_VERSION"
