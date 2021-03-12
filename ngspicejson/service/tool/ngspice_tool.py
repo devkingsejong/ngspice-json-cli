@@ -13,7 +13,7 @@ def check_ngspice_is_installed():
 
 def ngspice(*arg):
     result = subprocess.check_output(["ngspice", *arg])
-    return result
+    return result.decode('utf-8')
 
 
 def ngspice_with_command(command, file, *arg):
