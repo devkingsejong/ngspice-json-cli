@@ -8,6 +8,7 @@ from service.parse.parse_print_tabular_contents import ParsePrintTabularContents
 from service.parse.parse_ngspice_version import ParseNgspiceVersion
 from service.business.preordered_ngspice_command import get_ngspice_verison
 from service.parse import inject_target
+from service.tool.exception import GlobalException
 
 
 class NGSPICEJsonCli:
@@ -19,21 +20,20 @@ class NGSPICEJsonCli:
     @needs_ngspice
     def run(self, command, file, real=False):
 
-        get_all_device_information = ngspice_with_command(command, file)
+        try:
+            get_all_device_information, err_output = ngspice_with_command(command, file)
+            temp = []
+            for target in inject_target:
+                try:
+                    parse = target(get_all_device_information, real)
+                    result_of_all_prints = parse.dict()
+                    temp.append(result_of_all_prints)
+                except:
+                    pass
+            return json.dumps(temp)
+        except GlobalException as e:
+            return str(e)
 
-        temp = []
-        for target in inject_target:
-            try:
-                parse = target(get_all_device_information, real)
-                result_of_all_prints = parse.dict()
-                temp.append(result_of_all_prints)
-            except:
-                pass
-        return json.dumps(temp)
-        #
-        # m = ParseModelList(get_all_device_information)
-        # result_of_all_prints = m.dict()
-        # return json.dumps(result_of_all_prints)
     #
     # @needs_ngspice
     # def run2(self, command, file):
