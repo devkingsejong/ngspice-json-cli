@@ -7,6 +7,7 @@ from service.parse.parse_initial_transient_solution import ParseInitialTransient
 from service.parse.parse_print_tabular_contents import ParsePrintTabularContents
 from service.parse.parse_ngspice_version import ParseNgspiceVersion
 from service.business.preordered_ngspice_command import get_ngspice_verison
+from service.parse import inject_target
 
 
 class NGSPICEJsonCli:
@@ -15,15 +16,24 @@ class NGSPICEJsonCli:
     def version(self):
         return json.dumps({'ngspice': get_ngspice_verison(), 'ngspice-json-cli': '0.0.1'})
 
+    @needs_ngspice
+    def run(self, command, file):
 
-    # @needs_ngspice
-    # def run(self, command, file):
-    #
-    #     get_all_device_information = ngspice_with_command(command, file)
-    #
-    #     m = ParseModelList(get_all_device_information)
-    #     result_of_all_prints = m.dict()
-    #     return json.dumps(result_of_all_prints)
+        get_all_device_information = ngspice_with_command(command, file)
+
+        temp = []
+        for target in inject_target:
+            try:
+                parse = target(get_all_device_information)
+                result_of_all_prints = parse.dict()
+                temp.append(result_of_all_prints)
+            except:
+                pass
+        return json.dumps(temp)
+        #
+        # m = ParseModelList(get_all_device_information)
+        # result_of_all_prints = m.dict()
+        # return json.dumps(result_of_all_prints)
     #
     # @needs_ngspice
     # def run2(self, command, file):
