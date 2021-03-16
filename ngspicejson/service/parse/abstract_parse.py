@@ -4,12 +4,14 @@ from ..tool.marshal import global_marshal
 
 class AbstractParse(metaclass=ABCMeta):
 
-    def __init__(self, input):
+    def __init__(self, input, real=False):
         self.input = input
+        self.real = real
 
     def dict(self):
         target_list = self._detect_target()
-        return global_marshal(self._get_title(), self._parse(target_list), self.input)
+        real = self.input if self.real is True else ""
+        return global_marshal(self._get_title(), self._parse(target_list), real)
 
     @abstractmethod
     def _detect_target(self):

@@ -17,14 +17,14 @@ class NGSPICEJsonCli:
         return json.dumps({'ngspice': get_ngspice_verison(), 'ngspice-json-cli': '0.0.1'})
 
     @needs_ngspice
-    def run(self, command, file):
+    def run(self, command, file, real=False):
 
         get_all_device_information = ngspice_with_command(command, file)
 
         temp = []
         for target in inject_target:
             try:
-                parse = target(get_all_device_information)
+                parse = target(get_all_device_information, real)
                 result_of_all_prints = parse.dict()
                 temp.append(result_of_all_prints)
             except:
