@@ -11,7 +11,11 @@ class AbstractParse(metaclass=ABCMeta):
     def dict(self):
         target_list = self._detect_target()
         real = self.input if self.real is True else ""
-        return global_marshal(self._get_title(), self._parse(target_list), real)
+        try:
+            parse = self._parse(target_list)
+        except:
+            parse = []
+        return global_marshal(self._get_title(), parse, real)
 
     @abstractmethod
     def _detect_target(self):
