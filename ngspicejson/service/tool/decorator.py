@@ -1,5 +1,5 @@
 from .ngspice_tool import check_ngspice_is_installed
-from .exception import global_exception
+from .exception import GlobalException
 
 
 def needs_ngspice(f):
@@ -8,8 +8,8 @@ def needs_ngspice(f):
         if a:
             return f(*args, **kwargs)
         else:
-            return global_exception("NGSPICE NOT FOUND EXCEPTION",
+            return str(GlobalException("NgspiceNotFoundException",
                                     "You should install NGSPICE. If your NGSPICE is alrealdy installed,"
-                                    " check the alias settings.")
+                                    " check the alias settings."))
 
     return wrap
