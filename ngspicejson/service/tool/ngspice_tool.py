@@ -21,6 +21,6 @@ def ngspice_with_command(command, file, *arg):
         # raise FileNotFoundError
         pipe = subprocess.check_output(["printf", "{0}".format(command)])
         result = subprocess.run(["ngspice", "-p", "-n", "{0}".format(file)], input=pipe, capture_output=True)
-        return result.stdout.decode('utf-8'), result.stderr.decode('utf-8')
+        return result.stdout.decode('utf-8'), result.stderr.decode('utf-8'), result.args
     except (subprocess.CalledProcessError, subprocess.SubprocessError, FileNotFoundError) as e:
         raise GlobalException("NgspiceCLIiError", "Error occurred during run Ngspice cli.")
