@@ -1,14 +1,11 @@
 import fire
 from service.tool.decorator import needs_ngspice
-from service.tool.ngspice_tool import ngspice_with_command, ngspice
+from service.tool.ngspice_tool import ngspice_with_command
 import json
-from service.parse.parse_model_list import ParseModelList
-from service.parse.parse_initial_transient_solution import ParseInitialTransientSolution
-from service.parse.parse_print_tabular_contents import ParsePrintTabularContents
-from service.parse.parse_ngspice_version import ParseNgspiceVersion
 from service.business.preordered_ngspice_command import get_ngspice_verison
 from service.parse import inject_target
 from service.tool.exception import GlobalException
+from service.business.ngspice_error_message import parse_ngspice_error_messages
 
 
 class NGSPICEJsonCli:
@@ -19,10 +16,11 @@ class NGSPICEJsonCli:
 
     @needs_ngspice
     def run(self, command, file, real=False):
-
         try:
             get_all_device_information, err_output = ngspice_with_command(command, file)
+
             temp = []
+            temp.append(parse_ngspice_error_messages(err_output))
             for target in inject_target:
                 try:
                     parse = target(get_all_device_information, real)
@@ -33,32 +31,6 @@ class NGSPICEJsonCli:
             return json.dumps(temp)
         except GlobalException as e:
             return str(e)
-
-    #
-    # @needs_ngspice
-    # def run2(self, command, file):
-    #
-    #     get_all_device_information = ngspice_with_command(command, file)
-    #
-    #     m = ParseInitialTransientSolution(get_all_device_information)
-    #     result_of_all_prints = m.dict()
-    #     return json.dumps(result_of_all_prints)
-    #
-    # @needs_ngspice
-    # def run3(self, command, file):
-    #
-    #     get_all_device_information = ngspice_with_command(command, file)
-    #     m = ParsePrintTabularContents(get_all_device_information)
-    #     result_of_all_prints = m.dict()
-    #     return json.dumps(result_of_all_prints)
-    #
-    # @needs_ngspice
-    # def run4(self, command, file):
-    #
-    #     get_all_device_information = ngspice("-v")
-    #     m = ParseNgspiceVersion(get_all_device_information)
-    #     result_of_all_prints = m.dict()
-    #     return json.dumps(result_of_all_prints)
 
 
 if __name__ == '__main__':
