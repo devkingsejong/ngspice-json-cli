@@ -3,7 +3,7 @@ from service.tool.decorator import needs_ngspice
 from service.tool.ngspice_tool import ngspice_with_command
 import json
 from service.business.preordered_ngspice_command import get_ngspice_verison
-from service.parse import inject_target
+from service.parse import INJECT_TARGETS
 from service.tool.exception import GlobalException
 from service.business.ngspice_error_message import parse_ngspice_error_messages
 from service.business.debug_message import make_debug_message
@@ -23,7 +23,7 @@ class NGSPICEJsonCli:
             temp = []
             temp.append(parse_ngspice_error_messages(err_output))  # Error Message always placed head of list.
 
-            for target in inject_target:
+            for target in INJECT_TARGETS:
                 try:
                     parse = target(get_all_device_information, real)
                     result_of_all_prints = parse.dict()

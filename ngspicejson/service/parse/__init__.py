@@ -7,5 +7,5 @@ from .parse_ngspice_version import ParseNgspiceVersion
 from .parse_print_tabular_contents import ParsePrintTabularContents
 from .parse_specific_print import ParseSpecificPrint
 
-inject_target = [ParseInitialTransientSolution, ParseModelList, ParseNgspiceVersion, ParsePrintTabularContents,
-                 ParseSpecificPrint]
+INJECT_TARGETS = [ParseInitialTransientSolution, ParseModelList, ParseNgspiceVersion, ParsePrintTabularContents,
+                  ParseSpecificPrint]
