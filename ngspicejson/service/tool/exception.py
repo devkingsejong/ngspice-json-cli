@@ -2,5 +2,10 @@ from .marshal import global_marshal
 import json
 
 
-def global_exception(title, description):
-    print(json.dumps(global_marshal("EXCEPTION", {"title": title, "description": description})))
+class GlobalException(Exception):
+    def __init__(self, title="GlobalException", description="Raised Global Exception."):
+        self.title = title
+        self.description = description
+
+    def __str__(self):
+        return json.dumps(global_marshal("EXCEPTION", {"title": self.title, "description": self.description}))
