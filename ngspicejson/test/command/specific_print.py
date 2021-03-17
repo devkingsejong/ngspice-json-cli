@@ -4,10 +4,10 @@ from ngspicejson.service.parse.parse_specific_print import ParseSpecificPrint
 
 
 # python -m ngspicejson.test.command.specific_print
-class MyTestCase(unittest.TestCase):
+class TestParseSpecificPrint(unittest.TestCase):
     maxDiff = None
 
-    def test_맥OS_10_15_7_ngspice34_버전_출력을_잘_파싱하는지(self):
+    def test_맥OS_10_15_7_ngspice34_특정값_출력을_잘_파싱하는지(self):
 
         cli_input = """
 ******
@@ -44,7 +44,7 @@ ngspice 245 ->
         del result_of_all_prints['real']  # 실제 출력 값을 표시하는 부분 삭제
         self.assertEqual(result_of_all_prints, correct_output)
 
-    def test_Ubuntu_18_04_5_ngspice27_버전_출력을_잘_파싱하는지(self):
+    def test_Ubuntu_18_04_5_ngspice27_특정값_출력을_잘_파싱하는지(self):
 
         cli_input = """******
 ** ngspice-27 : Circuit level simulation program

@@ -4,10 +4,10 @@ from ngspicejson.service.parse.parse_print_tabular_contents import ParsePrintTab
 
 
 # python -m ngspicejson.test.command.print_tabular_contents
-class MyTestCase(unittest.TestCase):
+class TestParseTabularContents(unittest.TestCase):
     maxDiff = None
 
-    def test_맥OS_10_15_7_ngspice34_빌드버전_출력을_잘_파싱하는지(self):
+    def test_맥OS_10_15_7_ngspice34_테이블형_컨텐츠_출력을_잘_파싱하는지(self):
 
         cli_input = """
 
@@ -2251,7 +2251,7 @@ Index   time            v1#branch       in
         self.assertEqual(len(correct_output['contents'][1]['values']), 3)
         self.assertEqual(result_of_all_prints, correct_output)
 
-    def test_Ubuntu_18_04_5_ngspice27_빌드버전_출력을_잘_파싱하는지(self):
+    def test_Ubuntu_18_04_5_ngspice27_테이블형_컨텐츠_출력을_잘_파싱하는지(self):
 
         cli_input = """
         
