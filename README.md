@@ -6,7 +6,7 @@ Print NGSPICE result as JSON
 ngspice-json-cli can
 
 1. Simulate Ngspice circuit.(via ngspice program)
-2. Get ngspice printted result as Json type
+2. Get ngspice printed result as Json type
 
 ## How to install
 
