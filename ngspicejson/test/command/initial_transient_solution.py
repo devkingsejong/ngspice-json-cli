@@ -4,10 +4,10 @@ from ngspicejson.service.parse.parse_initial_transient_solution import ParseInit
 
 
 # python -m ngspicejson.test.command.initial_transient_solution
-class MyTestCase(unittest.TestCase):
+class TestParseInitialTransientSolution(unittest.TestCase):
     maxDiff = None
 
-    def test_맥OS_10_15_7_ngspice34_빌드버전_출력을_잘_파싱하는지(self):
+    def test_맥OS_10_15_7_초기값_출력을_잘_파싱하는지(self):
 
         cli_input = """
 ******
@@ -2255,7 +2255,7 @@ Index   time            v1#branch       in
 
         self.assertEqual(result_of_all_prints, correct_output)
 
-    def test_Ubuntu_18_04_5_ngspice27_빌드버전_출력을_잘_파싱하는지(self):
+    def test_Ubuntu_18_04_5_ngspice7_초기값_출력을_잘_파싱하는지(self):
 
         cli_input = """
         

@@ -4,10 +4,10 @@ from ngspicejson.service.parse.parse_model_list import ParseModelList
 
 
 # python -m ngspicejson.test.command.show_all
-class MyTestCase(unittest.TestCase):
+class TestParseShowAllCommand(unittest.TestCase):
     maxDiff = None
 
-    def test_맥OS_10_15_7_ngspice34_빌드버전_출력을_잘_파싱하는지(self):
+    def test_맥OS_10_15_7_ngspice34_전체노드_출력을_잘_파싱하는지(self):
 
         cli_input = """
 No compatibility mode selected!
@@ -105,7 +105,7 @@ ngspice 98 -> ngspice-34 done
 
         self.assertEqual(result_of_all_prints, correct_output)
 
-    def test_Ubuntu_18_04_5_ngspice27_빌드버전_출력을_잘_파싱하는지(self):
+    def test_Ubuntu_18_04_5_ngspice27_전체노드_출력을_잘_파싱하는지(self):
 
         cli_input = """
 Capacitor: Fixed capacitor

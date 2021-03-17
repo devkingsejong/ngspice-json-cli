@@ -4,7 +4,7 @@ from ngspicejson.service.parse.parse_ngspice_version import ParseNgspiceVersion
 
 
 # python -m ngspicejson.test.command.ngspice_version
-class MyTestCase(unittest.TestCase):
+class TestParseNgspiceVersion(unittest.TestCase):
     maxDiff = None
 
     def test_맥OS_10_15_7_ngspice34_버전_출력을_잘_파싱하는지(self):
