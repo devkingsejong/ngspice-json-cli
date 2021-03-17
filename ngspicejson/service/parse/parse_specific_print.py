@@ -26,4 +26,4 @@ class ParseSpecificPrint(AbstractParse):
         return result_of_all_prints
 
     def _get_title(self):
-        return "SPECIFIC_PRINT"
+        return "SPECIFIC_PRINT2"
