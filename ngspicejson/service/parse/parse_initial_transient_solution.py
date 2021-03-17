@@ -5,6 +5,7 @@ import re
 
 class ParseInitialTransientSolution(AbstractParse):
     def _detect_target(self):
+        return ""
         return re.findall(r"(Initial Transient Solution\n"
                           r"--------------------------\n\n"
                           r"Node.*Voltage\n----.*-------\n([a-z].*\n){1,})", self.input)
