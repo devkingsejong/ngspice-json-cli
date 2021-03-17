@@ -61,7 +61,7 @@ jobs:
               ...context.repo,
               pull_number,
               body:"Success to test code!",
-              event: "REQUEST_CHANGES"
+              event: "APPROVE"
             })
         if: success()
     
