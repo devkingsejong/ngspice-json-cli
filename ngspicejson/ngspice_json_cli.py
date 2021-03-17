@@ -39,6 +39,11 @@ class NGSPICEJsonCli:
             return json.dumps(temp)
         except GlobalException as e:
             return str(e)
+        except Exception as e:
+            temp_exception = GlobalException('SomethingBadException',
+                                             'A fatal error that can not be processed by the program has occurred.',
+                                             )
+            return str(temp_exception)
 
 
 if __name__ == '__main__':
