@@ -22,13 +22,31 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Pull source code
+        uses: actions/checkout@master
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.9
-
+      - name: Install requirements
+        run: pip install -r ngspicejson/requirements.txt
+        
+      - name: Test Codes
+        run: python -m unittest discover ngspicejson/test -p "*.py"
+      - name: if fail
+        uses: actions/github-script@0.2.0  
+        with:
+          github-token: ${{github.token}}  
+          script: |                        
+            const ref = "${{github.ref}}"
+            const pull_number = Number(ref.split("/")[2])
+            await github.pulls.createReview({
+              ...context.repo,
+              pull_number,
+              body:"Failed to pass the test code.",
+              event: "REQUEST_CHANGES"
+            })
+            await github.pulls.update({
+              ...context.repo,
+              pull_number,
+              state: "closed"
+            })
+        if: failure()                     
+    
