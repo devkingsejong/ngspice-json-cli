@@ -34,6 +34,18 @@ That command will be returned json array.
 
 ## Basic Usage
 
+### Command
+
+Command|Notes|
+|---------|---|
+|run|The simulation result is print in the data type mentioned below.(You can use --option value.)|
+|version|Print version information.|
+
+#### +a Version ouput.
+```
+{"ngspice": "34", "ngspice-json-cli": "0.0.1"}
+```
+
 ### Options
 
 Command|Notes|required|
@@ -996,6 +1008,12 @@ Display Debug Messages.(This data type is always assigned as the last value in t
    "real":""
 }
 ```
+
+## Known Issues
+1. User can't change Ngspice options.
+2. Not available in version 3.6 or lower.
+3. Not have all of the error logging and exception handling.
+4. Can't cover all kinds of output.(feel free to report new data types)
 
 ## License
 
