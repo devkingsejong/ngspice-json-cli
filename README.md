@@ -2,6 +2,7 @@
 Print NGSPICE result as JSON
 
 [![](https://img.shields.io/badge/Ngspice-27%2C34-orange)]()
+[![](https://img.shields.io/badge/Python-3.8%2C3.9-blue)]()
 
 ngspice-json-cli can
 
@@ -966,6 +967,34 @@ Display Debug Messages.(This data type is always assigned as the last value in t
       ],
       "real":""
    }
+```
+
+## Defined exception
+
+### NgspiceNotFoundException
+
+```json
+{
+   "type":"EXCEPTION",
+   "contents":{
+      "title":"NgspiceNotFoundException",
+      "description":"You should install NGSPICE. If your NGSPICE is alrealdy installed, check the alias settings."
+   },
+   "real":""
+}
+```
+
+### SomethingBadException
+
+```json
+{
+   "type":"EXCEPTION",
+   "contents":{
+      "title":"SomethingBadException",
+      "description":"A fatal error that can not be processed by the program has occurred."
+   },
+   "real":""
+}
 ```
 
 ## License
