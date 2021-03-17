@@ -62,7 +62,7 @@ Displays errors returned by the Ngspice program.(This data type is always assign
 Parse Initialnal Trainsient Solution Value.
 
 <details>
-<summary>접기/펼치기 버튼</summary>
+<summary>open/close button</summary>
 <div markdown="1">
 
 ```json
@@ -127,7 +127,7 @@ Parse Initialnal Trainsient Solution Value.
 Parse Node Model's Value.(In general, this value printed when the 'show all ' command is executed.)
 
 <details>
-<summary>접기/펼치기 버튼</summary>
+<summary>open/close button</summary>
 <div markdown="1">
 
 ```json
@@ -497,7 +497,7 @@ Parse Tabular Contents(In general, this value printed when the 'print' command i
 If there are multiple print statements in the circuit, result data will be separated printed like "print_#1".
 
 <details>
-<summary>접기/펼치기 버튼</summary>
+<summary>open/close button</summary>
 <div markdown="1">
 
 ```json
@@ -967,4 +967,25 @@ Display Debug Messages.(This data type is always assigned as the last value in t
       "real":""
    }
 ```
+
+## License
+
+### Ngspice
+
+```
+******
+** ngspice-34 : Circuit level simulation program
+** The U. C. Berkeley CAD Group
+** Copyright 1985-1994, Regents of the University of California.
+** Copyright 2001-2020, The ngspice team.
+** Please get your ngspice manual from http://ngspice.sourceforge.net/docs.html
+** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html
+******
+```
+
+### ngspice-json-cli
+
+MIT
+
+
 
