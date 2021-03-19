@@ -10,5 +10,5 @@ class Version(Resource):
         return {
             'ngspice': get_ngspice_verison(),
             'ngspice-json-cli': app.config["VERSION"],
-            'message': "Welcome To Ngspice-json-cli server!"
+            'message': "Welcome To ngspice-json-cli server!"
         }

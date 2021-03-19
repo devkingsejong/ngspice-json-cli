@@ -17,7 +17,7 @@ class NGSPICEJsonCli:
 
     @needs_ngspice
     def server(self, host='0.0.0.0', port='32541', venv=None):
-        http_socket = "{0}:{1}".format(host,port)
+        http_socket = "{0}:{1}".format(host, port)
         ini_file_path = ngspicejson.__file__.split('ngspicejson/__init__.py')[0]+'uwsgi.ini'
 
         if venv is None:
