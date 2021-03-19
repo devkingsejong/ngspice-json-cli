@@ -1,1 +1,4 @@
 fire==0.4.0
+Flask==1.1.2
+Flask-RESTful==0.3.8
+uWSGI==2.0.19.1

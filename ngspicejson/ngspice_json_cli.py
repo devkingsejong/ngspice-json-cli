@@ -2,13 +2,15 @@ import fire
 import time
 import json
 
-from service.tool.decorator import needs_ngspice
-from service.tool.ngspice_tool import ngspice_with_command
-from service.business.preordered_ngspice_command import get_ngspice_verison
-from service.parse import INJECT_TARGETS
-from service.tool.exception import GlobalException
-from service.business.ngspice_error_message import parse_ngspice_error_messages
-from service.business.debug_message import make_debug_message
+from .service.tool.decorator import needs_ngspice
+from .service.tool.ngspice_tool import ngspice_with_command
+from .service.business.preordered_ngspice_command import get_ngspice_verison
+from .service.parse import INJECT_TARGETS
+from .service.tool.exception import GlobalException
+from .service.business.ngspice_error_message import parse_ngspice_error_messages
+from .service.business.debug_message import make_debug_message
+import ngspicejson
+import subprocess
 
 
 class NGSPICEJsonCli:
@@ -16,6 +18,17 @@ class NGSPICEJsonCli:
     @needs_ngspice
     def version(self):
         return json.dumps({'ngspice': get_ngspice_verison(), 'ngspice-json-cli': '0.0.1'})
+
+    @needs_ngspice
+    def server(self, host='0.0.0.0', port='32541', venv=None):
+        http_socket = "{0}:{1}".format(host,port)
+        ini_file_path = ngspicejson.__file__.split('ngspicejson/__init__.py')[0]+'uwsgi.ini'
+
+        if venv is None:
+            return_code = subprocess.call("uwsgi --http {0} {1}".format(http_socket, ini_file_path), shell=True)
+        else:
+            return_code = subprocess.call("uwsgi --http {0} --venv {1} {2}".format(http_socket, venv, ini_file_path),
+                                          shell=True)
 
     @needs_ngspice
     def run(self, command, file, tag=None, real=False, debug=False):
