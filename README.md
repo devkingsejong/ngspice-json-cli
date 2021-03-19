@@ -9,6 +9,8 @@ ngspice-json-cli can
 1. Simulate Ngspice circuit.(via ngspice program)
 2. Get ngspice printed result as Json type
 
+:) You can also run ngspice-json-cli as server-mode
+
 ## How to install
 
 1. Install ngspice
@@ -27,7 +29,7 @@ Currently, the version 27 and 34 have been confirmed to be support.
 
 3. Test run
 ```
-> python3 ngspicejson/ngspice_json_cli.py run --command="" --file="ngspicejson/default_test_circuit.cir" --debug="True"
+> python -m ngspicejson.ngspice_json_cli run --command="show all" --file="default_test_circuit.cir" --debug="True"
 ```
 
 That command will be returned json array.
