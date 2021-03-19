@@ -20,5 +20,4 @@ setup(
     keywords='ngspice python cli json tool bash circuit simulate',
     url='https://github.com/devkingsejong/ngspice-json-cli',
     description='Print NGSPICE result as JSON',
-    long_description=long_description
 )
