@@ -1,1 +1,1 @@
-__all__=['version']
+__all__=['version', 'run']
