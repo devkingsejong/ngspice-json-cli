@@ -1,6 +1,7 @@
 import fire
 import json
 
+from .config import VERSION
 from .service.tool.decorator import needs_ngspice
 from .service.business.preordered_ngspice_command import get_ngspice_verison
 from .service.business.simulate_ngspice import simulate
@@ -12,7 +13,7 @@ class NGSPICEJsonCli:
 
     @needs_ngspice
     def version(self):
-        return json.dumps({'ngspice': get_ngspice_verison(), 'ngspice-json-cli': '0.0.1'})
+        return json.dumps({'ngspice': get_ngspice_verison(), 'ngspice-json-cli': VERSION})
 
     @needs_ngspice
     def server(self, host='0.0.0.0', port='32541', venv=None):

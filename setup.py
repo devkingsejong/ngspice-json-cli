@@ -1,4 +1,6 @@
 from setuptools import setup, find_packages
+from ngspicejson.config import VERSION
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -6,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='ngspice-json-cli',
-    version='0.0.1',
+    version=VERSION,
     packages=find_packages(),
     author='devkingsejong',
     author_email='devkingsejong@gmail.com',
