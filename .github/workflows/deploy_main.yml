@@ -25,6 +25,12 @@ jobs:
 
       - name: Install requirements
         run: cat ngspicejson/config.py >> $GITHUB_ENV
+        
+      - name: Install requirements
+        run: echo 'ASDF = "33"' >> $GITHUB_ENV
+        
+      - name: Install requirements
+        run: echo "ZZ = 33" >> $GITHUB_ENV
       
       - name: Use the value
         run: echo "${{ env.VERSION }}"
@@ -34,3 +40,15 @@ jobs:
         
       - name: Use the value
         run: echo $VERSION
+        
+      - name: Use the value
+        run: echo $ASDF
+        
+      - name: Use the value
+        run: echo "${{ env.ASDF }}"
+        
+      - name: Use the value
+        run: echo $ZZ
+        
+      - name: Use the value
+        run: echo "${{ env.ZZ }}"
