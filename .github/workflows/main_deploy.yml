@@ -1,0 +1,69 @@
+  # This is a basic workflow to help you get started with Actions
+
+  name: TAG_DEPLOY_PYPI_DOCKERHUB
+
+  # Controls when the action will run.
+  on:
+    # Triggers the workflow on push or pull request events but only for the main branch
+    push:
+      branches: [ master ]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+  # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  jobs:
+    # This workflow contains a single job called "build"
+    build:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        - name: Pull source code
+          uses: actions/checkout@master
+
+        - name: Set Version
+          run: cat ngspicejson/config.py >> $GITHUB_ENV
+
+        - name: Prints Version
+          run: echo "${{ env.VERSION }}"
+
+        - name: Set tag
+          run: git tag "${{ env.VERSION }}"
+
+        - name: Push out tag
+          run: git push -f origin dev "${{ env.VERSION }}"
+
+        - name: Install wheel
+          run: pip install setuptools wheel
+
+        - name: Build python module
+          run: python setup.py sdist bdist_wheel
+
+        - name: Install twine
+          run: pip install twine
+
+        - name: Upload PyPi
+          run: python -m twine upload -u devkingsejong -p ${{ secrets.PYPI_PW }} dist/*
+
+        - name: Add Docker Repo
+          run: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+        - name: Add Docker Repo2
+          run: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        - name: Update APT
+          run: sudo apt-get update
+
+        - name: Install docker
+          run: sudo apt install docker-ce
+
+        - name: Login docker
+          run: docker login -u="devkingsejong" -p=${{ secrets.DOCKER_PW }}
+
+        - name: Docker build
+          run: docker build --tag devkingsejong/ngspice-json-cli:${{ env.VERSION }} .
+
+        - name: Docker push
+          run: docker push devkingsejong/ngspice-json-cli:${{ env.VERSION }}
