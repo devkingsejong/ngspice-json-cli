@@ -1,6 +1,8 @@
 FROM ubuntu:18.04
 MAINTAINER devkingsejong <devkingsejong@gmail.com>
 
+ARG VERSION
+
 RUN apt update
 RUN apt -y install software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
