@@ -21,8 +21,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Pull source code
-        uses: actions/checkout@dev
-
+        uses: actions/checkout@master
+        
       - name: Install requirements
         run: cat ngspicejson/config.py >> $GITHUB_ENV
         
