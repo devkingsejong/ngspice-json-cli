@@ -10,7 +10,7 @@ RUN apt -y install python3.8-dev
 RUN apt -y install git
 RUN apt -y install ngspice
 
-RUN git clone -b 0.0.3 https://github.com/devkingsejong/ngspice-json-cli
+RUN git clone -b $VERSION https://github.com/devkingsejong/ngspice-json-cli
 WORKDIR /ngspice-json-cli
 RUN apt -y install python3-pip
 RUN python3.8 -m pip install -r ngspicejson/requirements.txt
