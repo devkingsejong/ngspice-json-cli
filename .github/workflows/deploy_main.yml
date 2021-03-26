@@ -24,11 +24,11 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install requirements
-        run: echo "kk = 33" >> $GITHUB_ENV
+        run: cat ngspicejson/config.py >> $GITHUB_ENV
         
       - name: Use the value
-        run: echo "${{ env.kk }}"
+        run: echo "${{ env.VERSION }}"
         
       - name: Use the value
-        run: echo $kk
+        run: echo $VERSION
 
