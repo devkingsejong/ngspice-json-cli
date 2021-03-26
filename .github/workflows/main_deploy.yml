@@ -33,7 +33,7 @@
           run: git tag "${{ env.VERSION }}"
 
         - name: Push out tag
-          run: git push -f origin dev "${{ env.VERSION }}"
+          run: git push -f origin main "${{ env.VERSION }}"
 
         - name: Install wheel
           run: pip install setuptools wheel
