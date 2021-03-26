@@ -32,6 +32,9 @@ jobs:
       - name: Install requirements
         run: echo "ZZ = 33" >> $GITHUB_ENV
       
+      - name: Install requirements
+        run: echo "kk = 33" >> $GITHUB_ENV
+      
       - name: Use the value
         run: echo "${{ env.VERSION }}"
         
@@ -49,6 +52,13 @@ jobs:
         
       - name: Use the value
         run: echo $ZZ
+        
+        
+      - name: Use the value
+        run: echo "${{ env.kk }}"
+        
+      - name: Use the value
+        run: echo $kk
         
       - name: Use the value
         run: echo "${{ env.ZZ }}"
