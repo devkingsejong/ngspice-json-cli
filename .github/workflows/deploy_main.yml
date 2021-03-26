@@ -27,7 +27,25 @@ jobs:
         run: cat ngspicejson/config.py >> $GITHUB_ENV
       
       - name: Use the value
-        run: echo ${{ env.VERSION }}
+        run: echo "${{ env.VERSION }}"
+        
+      - name: Use the value
+        run: echo "${{ VERSION }}"
+        
+      - name: Use the value
+        run: echo "${{ env }}"
+        
+      - name: Use the value
+        run: echo "${{ version }}"
+        
+      - name: Use the value
+        run: echo "${{ env.version }}"
+        
+      - name: Use the value
+        run: echo $version
+        
+      - name: Use the value
+        run: echo env.version
         
       - name: Use the value
         run: echo "ASDF"
