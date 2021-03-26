@@ -33,7 +33,7 @@
           run: git tag "${{ env.VERSION }}"
 
         - name: Push out tag
-          run: git push -f origin dev "${{ env.VERSION }}"
+          run: git push -f origin main "${{ env.VERSION }}"
 
         - name: Install wheel
           run: pip install setuptools wheel
@@ -63,7 +63,7 @@
           run: docker login -u="devkingsejong" -p=${{ secrets.DOCKER_PW }}
 
         - name: Docker build
-          run: docker build --tag devkingsejong/ngspice-json-cli:${{ env.VERSION }} .
+          run: docker build --build-arg VERSION=${{ env.VERSION }} --tag devkingsejong/ngspice-json-cli:${{ env.VERSION }} .
 
         - name: Docker push
           run: docker push devkingsejong/ngspice-json-cli:${{ env.VERSION }}
