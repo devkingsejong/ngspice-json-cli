@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install requirements
-        run: echo 'cat ngspicejson/config.py' >> $GITHUB_ENV
+        run: echo -n 'cat ngspicejson/config.py' >> $GITHUB_ENV
       
       - name: Use the value
         run: echo "${{ env.tagversion }}"
