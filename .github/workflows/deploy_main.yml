@@ -30,7 +30,7 @@ jobs:
         run: echo "${{ env.VERSION }}"
         
       - name: Use the value
-        run: echo "${{ env }}"
+        run: echo echo "${{ steps.env.VERSION }}"
         
       - name: Use the value
         run: echo "${{ env.version }}"
