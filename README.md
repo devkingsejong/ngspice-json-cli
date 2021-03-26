@@ -42,6 +42,7 @@ Command|Notes|
 |---------|---|
 |run|The simulation result is print in the data type mentioned below.(You can use --option value.)|
 |version|Print version information.|
+|server|Run ngspice-json-cli as server mode.|
 
 #### +a Version ouput.
 ```
