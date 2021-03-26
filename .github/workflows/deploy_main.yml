@@ -27,6 +27,5 @@ jobs:
         run: cat ngspicejson/config.py >> $GITHUB_ENV
       
       - name: Use the value
-        id: step_two
         run: |
           echo $VERSION
