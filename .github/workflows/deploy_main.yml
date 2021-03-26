@@ -24,19 +24,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install requirements
-        run: cat ngspicejson/config.py >> $GITHUB_ENV
+        run: echo "VERSION=0.0.3" >> $GITHUB_ENV
       
       - name: Use the value
         run: echo "${{ env.VERSION }}"
-        
-      - name: Use the value
-        run: echo "${{ steps.env.VERSION }}"
-        
-      - name: Use the value
-        run: echo "${{ env.version }}"
-        
-      - name: Use the value
-        run: echo $version
-        
-      - name: Use the value
-        run: echo "ASDF"
