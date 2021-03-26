@@ -27,4 +27,4 @@ jobs:
         run: source ngspicejson/config.py
       
       - name: Use the value
-        run: echo "${{ env.tagversion }}"
+        run: echo "${{ env.VERSION }}"
