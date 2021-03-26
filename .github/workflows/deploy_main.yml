@@ -27,4 +27,4 @@ jobs:
         run: cat ngspicejson/config.py >> $GITHUB_ENV
       
       - name: Use the value
-        run: echo "${{ env.version }}"
+        run: echo "${{ env.tagversion }}"
