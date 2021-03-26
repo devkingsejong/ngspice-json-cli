@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install requirements
-        run: echo "kk=33" >> $GITHUB_ENV
+        run: echo "kk = 33" >> $GITHUB_ENV
         
       - name: Use the value
         run: echo "${{ env.kk }}"
