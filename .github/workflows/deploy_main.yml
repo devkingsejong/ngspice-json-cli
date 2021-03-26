@@ -28,3 +28,6 @@ jobs:
       
       - name: Use the value
         run: echo $VERSION
+        
+      - name: Use the value
+        run: echo "ASDF"
