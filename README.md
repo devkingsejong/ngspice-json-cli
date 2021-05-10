@@ -10,6 +10,7 @@ ngspice-json-cli can
 2. Get ngspice printed result as Json type
 
 :) You can also run ngspice-json-cli as server-mode
+https://www.ngspicecloud.com
 
 ## How to install
 
