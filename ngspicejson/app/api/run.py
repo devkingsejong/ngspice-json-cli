@@ -17,10 +17,7 @@ class Run(Resource):
 
         result = simulate("show all", filename)
 
-        if extra_figure is None:
-            os.close(new_file)
-            return result
-        else:
+        if extra_figure is not None:
             avail_node_list = list(map(lambda x: x['node'], result[1]['contents']))
             user_node = extra_figure.split(",")
             if set(user_node).issubset(avail_node_list):
