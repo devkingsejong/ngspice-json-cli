@@ -15,9 +15,16 @@ class Run(Resource):
         new_file, filename = tempfile.mkstemp()
         os.write(new_file, file.read())
 
+        result = simulate("show all", filename)
+
         if extra_figure is None:
-            result = simulate("", filename)
+            os.close(new_file)
+            return result
         else:
-            result = simulate("print {0}".format(' '.join(extra_figure.split(","))), filename)
+            avail_node_list = list(map(lambda x: x['node'], result[1]['contents']))
+            user_node = extra_figure.split(",")
+            if set(user_node).issubset(avail_node_list):
+                result = simulate("print {0}".format(' '.join(user_node)), filename)
+
         os.close(new_file)
         return result
