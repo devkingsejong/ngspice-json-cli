@@ -11,9 +11,13 @@ class Run(Resource):
 
     def post(self):
         file = request.files['file']
-
+        extra_figure = request.form.get('figure')
         new_file, filename = tempfile.mkstemp()
         os.write(new_file, file.read())
-        result = simulate("", filename)
+
+        if extra_figure is None:
+            result = simulate("", filename)
+        else:
+            result = simulate("print {0}".format(' '.join(extra_figure.split(","))), filename)
         os.close(new_file)
         return result
