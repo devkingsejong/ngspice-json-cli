@@ -12,6 +12,12 @@ ngspice-json-cli can
 :) You can also run ngspice-json-cli as server-mode
 https://www.ngspicecloud.com
 
+
+
+https://user-images.githubusercontent.com/24914631/218299169-1145b057-d103-495a-b94f-0ce5c8a38e51.mov
+
+
+
 ## How to install
 
 1. Install ngspice
